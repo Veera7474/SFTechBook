@@ -1,0 +1,32 @@
+<template>  
+<div class="slds-form-element slds-align_absolute-center slds-m-top_x-large" style="padding:2px">
+    <div class="slds-col slds-size_7-of-12" style="background-color:whitesmoke;padding:1px;">
+    <form style="border-style:solid;border-width:2px;
+                                border-color:black; padding-left:30%;padding-right:30%">
+        <div  class="slds-align_absolute-center slds-m-top_small slds-text-heading_large" >
+            <span class="slds-align_absolute-center" style="color:Black"><U><B>Login Page</B></U></span>
+        </div>
+        <div class="slds-form-element__control">
+            <b><lightning-input label="Username:" name="username" type="text" onchange={handleChangeUserName} required="true"></lightning-input></b>
+        </div>
+        <div class="slds-form-element__control">
+            <b><lightning-input label="Password:" type="password"  name="Password" onchange={handleChangePassword} required="true"></lightning-input></b>
+        </div>
+        <br/>
+        <div class="slds-grid slds-grid_align-spread">
+                        
+            <div class="slds-col" style="height:4rem">
+                <b><lightning-button variant="base" label="Forget Password" onchange={handleChangeForgetPassword}></lightning-button></b>
+            </div>
+            <div class="slds-col" style="height:4rem">
+                <b><lightning-button variant="base" label="Register NewUser" onchange={handleChangeRegisterNewUser}></lightning-button></b>
+            </div>
+        </div>
+  <div class="slds-align_absolute-center" style="height:4rem">
+        <lightning-button variant="Brand" label="Login" onchange={handleChangeLoginButton}></lightning-button>
+    </div>
+   
+    </form>
+    </div>
+</div>
+</template>

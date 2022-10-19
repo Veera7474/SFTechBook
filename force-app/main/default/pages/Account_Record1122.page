@@ -1,0 +1,26 @@
+<apex:page standardController="Account ">
+  <apex:form >
+  <apex:pageBlock >
+  <apex:pageBlockSection >
+  <apex:inputField value="{!Account .Name}"/>
+  
+  <apex:actionStatus startText="Processing" stopText="stop" id="showprocessing">
+  <apex:facet name="start">
+  <apex:image id="theimage" url="{!URLFOR($Resource.imhloding)}" Style="width:5%" />
+  
+  
+  </apex:facet>
+  <apex:facet name="stop">
+  <apex:commandButton value="Save" action="{!Save}" status="showprocessing" reRender="showprocessing"/>
+  
+  </apex:facet>
+  
+  </apex:actionStatus>
+  
+  
+  </apex:pageBlockSection>
+  
+  </apex:pageBlock>
+  
+  </apex:form>
+</apex:page>

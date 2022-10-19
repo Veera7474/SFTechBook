@@ -1,0 +1,36 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="Username" type="String"/>
+    <aura:attribute name="Password" type="String"/> 
+    <aura:attribute name="isLogin" type="Boolean" default="flase"/> 
+    <body>  
+        <div class="slds-form-element slds-align_absolute-center slds-m-top_x-large" style="margin-top:100px;">
+            <div class="slds-col slds-size_4-of-12" style="background-color:white;">
+                <form style="border-style:solid;border-width:2px;
+                             border-color:white;background-color:white">
+                    <div  class="slds-align_absolute-center slds-m-top_small slds-text-heading_large">
+                        <span><U><B>LOGIN PAGE</B></U></span>
+                    </div>
+                    <div class="slds-form-element__control">
+                        <b><lightning:input label="Username:" name="username" value="{!v.Username}" required="true" aura:id ="Username"/></b>
+                    </div>
+                    <div class="slds-form-element__control">
+                        <b><lightning:input label="Password:" type="password" name="password"  value="{!v.Password}" required="true" aura:id ="Password"/></b>
+                    </div>
+                    <div class="slds-align_absolute-center" style="height:4rem">
+                        <lightning:button variant="Brand" label="Login" onclick="{!c.buttonFunction}"/>
+                    </div>
+                    
+                    <div class="slds-grid slds-grid_align-spread">
+                        
+                        <div class="slds-col" style="height:4rem">
+                            <b><lightning:button variant="Brand" label="Forget Password" onclick="{!c.ForgetPassword}" aura:id ="ForgetPassword"/></b>
+                        </div>
+                        <div class="slds-col" style="height:4rem">
+                            <b><lightning:button variant="Brand" label="Register NewUser" onclick="{!c.RegisterNewUser}" aura:id ="RegisterNewUser"/></b>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>    
+</aura:component>

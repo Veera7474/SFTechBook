@@ -1,0 +1,96 @@
+<aura:component Controller="User" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <div  class="slds-align_absolute-center slds-m-top_small slds-text-heading_large" >
+        
+        <span class="slds-p-horizontal--medium slds-col slds-size_6-of-12 slds-m-bottom--medium" style="color:Black"><U><B>Register Form</B></U></span>
+    </div>
+    
+    <div class="slds-grid slds-wrap">
+        <div class="slds-p-horizontal--medium slds-col slds-size_6-of-12 slds-m-bottom--medium">
+            <div class="slds-form-element">
+                <label class="slds-form-element__label">Name</label>
+                <div class="slds-form-element__controller">
+                    <ui:inputText class="slds-input" value="" aura:id="userName"/>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="slds-grid slds-wrap">
+        <div class="slds-p-horizontal--medium slds-col slds-size_6-of-12 slds-m-bottom--medium">
+            <div class="slds-form-element">
+                <label class="slds-form-element__label">Email</label>
+                <div class="slds-form-element__controller">
+                    <ui:inputEmail class="slds-input" value="" aura:id="userEmail"/>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="slds-grid slds-wrap">
+        <div class="slds-p-horizontal--medium slds-col slds-size_6-of-12 slds-m-bottom--medium">
+            <div class="slds-form-element">
+                <label class="slds-form-element__label">Phone</label>
+                <div class="slds-form-element__controller">
+                    <ui:inputPhone class="slds-input" value="" aura:id="userPhone"/>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="slds-p-horizontal--medium slds-col slds-size_6-of-12 slds-m-bottom--medium">
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">Gender</label>
+            <div class="slds-form-element__controller">
+                <ui:inputSelect class="slds-select" aura:id="userGender" value="">
+                    <ui:inputSelectOption text="--None--"/>
+                    <ui:inputSelectOption text="Male"/>
+                    <ui:inputSelectOption text="Female"/>
+                    <ui:inputSelectOption text="Others"/>
+                </ui:inputSelect>
+            </div>
+        </div>
+    </div>
+    <div class="slds-grid slds-wrap">
+        <div class="slds-p-horizontal--medium slds-col slds-size_6-of-12 slds-m-bottom--medium">
+            <div class="slds-form-element">
+                <label class="slds-form-element__label">DOB</label>
+                <div class="slds-form-element__controller">
+                    <ui:inputDate class="slds-input" value="" aura:id="userDOB" displayDatePicker="true"/>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="slds-grid slds-wrap">
+        <div class="slds-p-horizontal--medium slds-col slds-size_6-of-12 slds-m-bottom--medium">
+            <div class="slds-form-element">
+                <label class="slds-form-element__label">UserName</label>
+                <div class="slds-form-element__controller">
+                    <ui:inputPhone class="slds-input" value="" aura:id="userUserName"/>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="slds-grid slds-wrap">
+        <div class="slds-p-horizontal--medium slds-col slds-size_6-of-12 slds-m-bottom--medium">
+            <div class="slds-form-element">
+                <label class="slds-form-element__label">Password</label>
+                <div class="slds-form-element__controller">
+                    <ui:inputPhone class="slds-input" value="" aura:id="userPassword"/>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="slds-form--inline slds-p-horizontal--medium slds-col slds-size_6-of-12 slds-m-bottom--medium"> 
+        <div class="slds-text-align--center slds-m-top--medium">
+            <button class="slds-button slds-button--brand" onclick="{!c.submitScoreAction123}">Submit</button>
+        </div>
+    </div> 
+  
+    
+</aura:component>

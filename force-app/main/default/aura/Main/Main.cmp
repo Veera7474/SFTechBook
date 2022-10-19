@@ -1,0 +1,9 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="c:navigateToCmp" action="{!c.NavigateComponent}" />
+    <aura:handler event="c:ForgetPasswordEvent" action="{!c.NavigateComponent1}" />
+    <aura:handler event="c:RegisterNewUserEvent" action="{!c.NavigateComponent2}" />
+     <div>
+        {!v.body}
+    </div>
+</aura:component>

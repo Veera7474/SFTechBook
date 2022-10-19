@@ -1,0 +1,168 @@
+<template >
+    <lightning-card  title="Accounts Related Contacts" icon-name="standard:contact_list" onsuccess={handleSuccess}>
+        
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered" onsuccess={handleSuccess}>
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                        <div class="slds-truncate">
+                            <lightning-input type="checkbox" onchange={selectAll} ></lightning-input>
+                        </div>
+                    </th>
+                    <th> Id</th>
+                    <th> first Name</th> 
+                    <th> last Name</th>
+                    <th> Email</th>
+                    <th> Mobile</th>
+                    <th>Description</th>
+                    <th> </th>
+                    <th> </th>
+                </tr>
+        </thead>
+            <tbody>
+                <template for:each={contactLists} for:item="item"  >
+                    <tr key={item.Id} class="slds-hint-parent" >
+                        <th scope="col">
+                            <div>
+                                <lightning-input type="checkbox" value={item.Id} onchange={selectedRow} ></lightning-input>
+                            </div>
+                        </th>
+                        <td>
+                            <div>
+                                {item.Id}
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                {item.FirstName}
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                {item.LastName}
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <lightning-formatted-email value="email@example.com" label={item.Email}></lightning-formatted-email>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                {item.Mobile}
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                {item.Description}
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <lightning-button variant="base" label="Edit" title="titleName" onclick={showModalBox} value={item.Id} ></lightning-button>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <lightning-button variant="base" label="Delete" title="titleName" onclick={deleteContact1} value={item.Id} ></lightning-button>
+                            </div>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+        <br/>
+        <div class="slds-form-element buttons slds-text-align_center">
+            <div class="slds-col">
+                <span></span>
+            </div>
+            <div class="slds-col">
+                <span>
+                  <lightning-button label="Delete Selected Items" class="slds-float_left" onclick={deleteSelectedItems} style="margin-left: 40%" variant="brand" align="center"></lightning-button>
+                  
+                </span>
+            </div>
+        </div><br/><br/>
+
+        <template if:true={bShowModal} >
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- modal header start -->
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModalBox}>
+                            <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 class="slds-text-heading_medium slds-hyphenate">Contail Details</h2>
+                    </header>
+                    <table>
+                        <template for:each={contactLists1} for:item="edit" for:index="indexVar">
+                            <div key={edit.Id}>
+                    <!-- modal body start -->
+                            <div class="slds-modal__content slds-p-around_medium">
+                                <div class="slds-grid slds-wrap">
+                                    <div class="slds-col slds-size_6-of-12 slds-p-horizontal--medium slds-m-bottom_medium">
+                                        <lightning-input class="validate"  label="FirstName" value={edit.FirstName} onchange={FirstNameChange} required></lightning-input>
+                                    </div>
+                                    <div class="slds-col slds-size_6-of-12 slds-p-horizontal--medium slds-m-bottom_medium">
+                                        <lightning-input class="validate"  label="LastName" value={edit.LastName} onchange={LastNameChange} required></lightning-input>
+                                    </div>
+                                    <div class="slds-col slds-size_6-of-12 slds-p-horizontal--medium slds-m-bottom_medium">
+                                        <lightning-input class="validate"  label="Email" value={edit.Email} onchange={EmailChange} pattern=".+@gmail.com" required></lightning-input>
+                                    </div>
+                                    <div class="slds-col slds-size_6-of-12 slds-p-horizontal--medium slds-m-bottom_medium">
+                                        <lightning-input class="validate"  label="Mobile" value={edit.Mobile} onchange={MobileChange} pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required></lightning-input>
+                                    </div>
+                                    <div class="slds-col slds-size_6-of-12 slds-p-horizontal--medium slds-m-bottom_medium">
+                                        <lightning-input class="validate" type="Date" label="Description" value={edit.Description} onchange={DescriptionChange}  required></lightning-input>
+                                    </div>
+                                    </div>
+                                    <!-- modal footer start-->
+                                    <footer class="slds-modal__footer">
+                                        <button class="slds-button slds-button_brand"
+                                         onclick={closeModalBox}>Cancel</button>
+                                        <button class="slds-button slds-button_brand"
+                                         type="save"
+                                         name="update"
+                                         onclick={saveModalBox}
+                                         onsuccess={handleSuccess}>Save</button>
+                                    </footer>
+                                    </div>
+                                </div>
+                            </template>
+                            
+                        </table>
+                </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open">
+                </div>
+        </template>
+
+        <div if:true={deleteIdList}>
+            <template if:true={deleteShowModal}>
+                <section aria-describedby="modal-content-id-1" aria-labelledby="modal-heading-01" aria-modal="true" class="slds-modal slds-fade-in-open" role="dialog" tabindex="-1">
+                    <div
+                        class="slds-modal__container">
+                        <!-- modal header start -->
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick={cancelModalBox} title="Close">
+                                <lightning-icon alternative-text="close" icon-name="utility:close" size="small" variant="inverse"></lightning-icon>
+                                <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 class="slds-text-heading_medium slds-hyphenate" id="modal-heading-01">Are You Sure You Want To Delete Seleted Contacts</h2>
+                        </header>
+                        <!-- modal body start -->
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <button class="slds-button slds-button_neutral" onclick={cancelModalBox}>Cancel</button>
+                            <button class="slds-button slds-button_neutral" onclick={deleteAll}>Delete</button>
+                        </div>
+                    </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+                </template>
+            </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,44 @@
+<aura:component Controller="User" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    
+   <!-- <aura:attribute name="UserDetails" type="User__c" default="{'sObjectType':'User__c'
+                                                                    
+                                                                  }"/> -->
+    <body>
+        <div class="slds-form-element slds-align_absolute-center slds-m-top_x-large" style="padding:1px">
+            <div class="slds-col slds-size_7-of-12" style="background-color:whitesmoke;padding:1px;">
+                <form style="border-style:solid;border-width:2px;
+                             border-color:black;background-color:white; padding-left:30%;padding-right:30%">
+                    <div  class="slds-align_absolute-center slds-m-top_small slds-text-heading_large" >
+                        <span class="slds-align_absolute-center" style="color:Black"><U><B>Register Form</B></U></span>
+                    </div>
+                    <br/>
+                    <b><ui:inputText aura:id="Name" label="Name" value="{!v.UserDetails.Name}" /></b>
+                    <br/>
+                    <b><ui:inputEmail aura:id="Email" label="Email" value="{!v.UserDetails.Email__c}"/></b>
+                    <br/>
+                    <b><ui:inputSelect aura:id="Gender" label="Gender" value="{!v.UserDetails.Gender__c}">
+                        <option value="">choose one...</option>
+                        <option text="Male" label="Male"/>
+                        <option text="Femal" label="Female"/>
+                        <option text="Others" label="Others"/>
+                        </ui:inputSelect></b>
+                    <br/>
+                    <b><ui:inputDate aura:id="DOB" label="DOB" value="{!v.UserDetails.DOB__c}" displayDatePicker="true"/></b>
+                    <br/>
+                    <b><ui:inputPhone aura:id="Phone" label="Phone" value="{!v.UserDetails.Mobile__c}"></ui:inputPhone></b>
+                    <br/>
+                    <b><ui:inputText aura:id="UserName" label="UserName" required="true" value="{!v.UserDetails.UserName__c}" /></b>
+                    <br/>
+                    <b><ui:inputText aura:id="Password" label="Password" required="true" value="{!v.UserDetails.Password__c}" /></b>
+                    <br/>
+                    <div class="slds-align_absolute-center" style="height:4rem">
+                        
+                       <button class="slds-button slds-button--brand" onclick="{!c.submit}">Submit</button>
+                        
+                    </div>
+                    <br/>
+                </form>
+            </div>
+        </div>
+    </body>
+</aura:component>
